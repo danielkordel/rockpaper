@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <meta charset=UTF-8>
+  </head>
+
+  <body>
+  <script>
+    const gameOptions = ['Rock','Paper','Scissors'];
+    let computerScore = 0;
+    let userScore = 0;
+    let userChoice;
+    let random;
+
+    function computerPlay(){
+      random = (Math.floor(Math.random() * gameOptions.length));
+      return random;
+    }
+
+    function userPlay(){
+      userChoice = parseInt(prompt('What is your play? 0-Rock, 1-Paper, 2-Scissors'));
+      console.log('Your choice is: ' + gameOptions[userChoice]);
+    }
+    
+    
+    for (i=1; userScore < 5 || computerScore < 5; i++){
+      computerPlay();
+      userPlay();
+
+      if (random === 0 && userChoice === 1 || random === 2 && userChoice === 0 || random === 1 && userChoice === 2){
+        console.log('Computer play is: ' + gameOptions[random]);
+        console.log('Player wins!');
+        userScore++;
+        console.log(userScore + '-' + computerScore);
+
+      }else if (random === 2 && userChoice === 1 || random === 1 && userChoice === 0 || random === 0 && userChoice === 2){
+        console.log('Computer play is: ' + gameOptions[random]);
+        console.log('Computer wins!');
+        computerScore++;
+        console.log(userScore + '-' + computerScore);
+      
+      }else if (random === 0 && userChoice === 0 || random === 1 && userChoice === 1 || random === 2 && userChoice === 2){
+        console.log('Computer play is: ' + gameOptions[random]);
+        console.log('Its a tie! No points!');
+        console.log(userScore + '-' + computerScore);
+      }
+
+      if (userScore >= 5 || computerScore >=5){
+        console.log('Koniec gry')
+        break
+      }
+    }
+      </script>
+    </body>
+</html>
